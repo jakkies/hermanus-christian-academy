@@ -17,13 +17,11 @@
     var overlay = pageKey === "home";
     var nav = [
       ["home", "Home", "index.html"],
-      ["about", "About HCA", "about.html"],
-      ["learning", "Learning", "learning.html"],
-      ["admissions", "Admissions", "admissions.html"],
-      ["school-life", "School Life", "school-life.html"],
-      ["news", "News & Events", "news.html"],
-      ["parents", "Parent Resources", "parents.html"],
-      ["contact", "Contact", "contact.html"]
+      ["about", "About Us", "about.html"],
+      ["learning", "Curriculum", "learning.html"],
+      ["admissions", "Admission", "admissions.html"],
+      ["school-life", "Meet our staff", "school-life.html"],
+      ["contact", "Contact us", "contact.html"]
     ];
 
     return [
