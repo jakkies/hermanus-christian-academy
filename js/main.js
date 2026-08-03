@@ -147,6 +147,7 @@
 
   function renderInternalPage() {
     if (pageKey === "home") return;
+    if (pageKey === "about") return;
     var page = content.pages[pageKey] || content.pages.about;
     document.title = page.eyebrow + " | Hermanus Christian Academy";
     var target = document.querySelector("[data-internal-page]");
