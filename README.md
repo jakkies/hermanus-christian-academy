@@ -11,16 +11,16 @@ For the closest match to a hosted website, you can also serve this folder with a
 ## Files
 
 - `index.html` — complete homepage
-- `about.html`, `learning.html`, `admissions.html`, `school-life.html`, `news.html`, `parents.html`, `contact.html` — internal pages
+- `about.html`, `learning.html`, `school-life.html`, `admissions.html`, `support.html`, `news.html`, `parents.html`, `contact.html` — internal pages
 - `css/styles.css` — brand system, components, layouts and responsive rules
-- `js/content.js` — editable learning phases, school values, gallery, news, events and internal-page content
-- `js/main.js` — shared header/footer rendering, mobile navigation, sticky header and newsletter feedback
+- `js/hca-content.js` — central editable source for school facts, learning, staff, activities, testimonials and current needs
+- `js/site.js` — shared rendering, mobile navigation and enquiry-form behaviour
 - `assets/images/` — all photography
 - `assets/og.png` — social sharing card
 
 ## Updating content
 
-Edit repeated content in `js/content.js`. Update larger homepage copy directly in `index.html`.
+Edit repeated factual content in `js/hca-content.js`. Update larger homepage copy directly in `index.html`.
 
 ## Replacing images
 
