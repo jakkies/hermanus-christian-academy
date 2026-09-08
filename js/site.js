@@ -116,7 +116,7 @@
   }
 
   function pageHero(page) {
-    return '<section class="inner-hero"><img class="inner-hero__image" src="' + page.image + '" alt="" width="1600" height="1000"><div class="container inner-hero__grid"><div><p class="eyebrow eyebrow--light"><span></span>' + page.eyebrow + "</p><h1>" + page.title + "</h1><p>" + page.intro + '</p></div><span class="inner-hero__mark" aria-hidden="true">✦</span></div></section>';
+    return '<section class="inner-hero"><img class="inner-hero__image" src="' + page.image + '" alt="" width="1600" height="1000"><div class="container inner-hero__grid"><div><p class="eyebrow eyebrow--light"><span></span>' + page.eyebrow + "</p><h1>" + page.title + "</h1><p>" + page.intro + '</p></div></div></section>';
   }
 
   function heading(eyebrow, title, text, centered) {
