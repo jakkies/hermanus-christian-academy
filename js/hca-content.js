@@ -7,7 +7,7 @@ window.HCA_CONTENT = {
     educationRangeShort: "ECD to Grade 9",
     telephone: "028 316 1910",
     telephoneHref: "+27283161910",
-    email: "hermacademy@whalemail.co.za",
+    email: "info@hermanuschristianacademy.co.za",
     physicalAddress: ["1823 Bergsig Road", "Sandbaai", "Hermanus"],
     postalAddress: ["PO Box 2202", "Hermanus", "7200"],
     npoRegistration: "004-172 NPO",
@@ -169,6 +169,6 @@ window.HCA_CONTENT = {
     support: { eyebrow: "SUPPORT HCA", title: "Help Us Create More Opportunities for Every Learner", intro: "Fundraising and sponsorship help HCA sustain learning, maintain the campus and widen learner access.", image: "assets/images/photos/SUPPORT-HERO-Students.jpg" },
     news: { eyebrow: "NEWS & EVENTS", title: "Stay Connected with HCA", intro: "School news and upcoming events will be published here as confirmed information becomes available.", image: "assets/images/intermediate.jpg" },
     parents: { eyebrow: "PARENT RESOURCES", title: "Information for HCA Families", intro: "Important school documents, notices and parent information will be made available here.", image: "assets/images/books.jpg" },
-    contact: { eyebrow: "CONTACT HCA", title: "We Would Love to Hear from You", intro: "Contact the school office for admissions, visits, parent information and current support details.", image: "assets/images/photos/CONTACT-HERO.jpg" }
+    contact: { eyebrow: "CONTACT HCA", title: "We Would Love to Hear from You", intro: "Contact the school office for admissions, visits, parent information and current support details.", image: "assets/images/photos/CONTACT-HERO-Computer-Lab.jpg" }
   }
 };
