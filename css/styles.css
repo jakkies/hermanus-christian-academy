@@ -1942,15 +1942,24 @@ article[id],
 
 .staff-card__initials {
   display: grid;
-  width: 48px;
-  height: 48px;
-  flex: 0 0 48px;
+  width: 64px;
+  height: 64px;
+  flex: 0 0 64px;
   place-items: center;
   color: var(--color-primary);
   background: var(--color-secondary-light);
   border-radius: 50%;
   font-family: var(--font-heading);
   font-weight: 700;
+}
+
+.staff-card__portrait {
+  width: 64px;
+  height: 64px;
+  flex: 0 0 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .staff-card h4 {

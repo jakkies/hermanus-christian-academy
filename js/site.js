@@ -32,6 +32,7 @@
       ["about", "About", "about.html"],
       ["learning", "Learning", "learning.html"],
       ["school-life", "School Life", "school-life.html"],
+      ["support", "Support", "support.html"],
       ["admissions", "Admissions", "admissions.html"],
       ["contact", "Contact", "contact.html"]
     ];
@@ -140,7 +141,10 @@
   function renderTeam() {
     return content.staffGroups.map(function (group) {
       return '<section class="staff-group"><h3>' + group.title + '</h3><div class="staff-grid">' + group.people.map(function (person) {
-        return '<article class="staff-card"><span class="staff-card__initials" aria-hidden="true">' + initials(person.name) + "</span><div><h4>" + person.name + "</h4><p>" + person.role + "</p></div></article>";
+        var portrait = person.image
+          ? '<img class="staff-card__portrait" src="' + person.image + '" alt="Portrait of ' + person.name + '" width="64" height="64" loading="lazy">'
+          : '<span class="staff-card__initials" aria-hidden="true">' + initials(person.name) + "</span>";
+        return '<article class="staff-card">' + portrait + "<div><h4>" + person.name + "</h4><p>" + person.role + "</p></div></article>";
       }).join("") + "</div></section>";
     }).join("");
   }
@@ -168,7 +172,7 @@
     return [
       '<section class="section" id="approach"><div class="container editorial-grid"><div class="content-copy">', heading("OUR APPROACH", "What Is A.C.E.?", "", false),
       '<p>Learners work largely through self-instructional workbooks known as PACEs — Packets of Accelerated Christian Education. Learning is individualised and mastery based, helping learners build understanding before they progress.</p>',
-      '<p>The programme incorporates biblical learning material and has been used by schools and homeschools internationally for more than four decades.</p></div><div class="feature-media"><img src="assets/images/photos/LEARNING-OUR-APPROACH.jpg" alt="HCA learners working through individual learning material" width="1620" height="1080"></div></div></section>',
+      '<p>The programme incorporates biblical learning material and has been used by schools and homeschools internationally for more than four decades.</p></div><div class="feature-media"><img src="assets/images/photos/LEARNING-OUR-APPROACH-Curriculum.jpg" alt="An HCA learner completing curriculum work at a desk" width="1620" height="1080"></div></div></section>',
       '<section class="section process-section" id="ace"><div class="container">', heading("HOW LEARNING WORKS", "A Clear Path from Placement to Progress", "Learners set goals, receive support and demonstrate mastery before moving forward.", true), renderProcess(), '</div></section>',
       '<section class="section" id="learner-benefits"><div class="container">', heading("BENEFITS FOR LEARNERS", "Learning Designed Around Real Progress", "", true), '<div class="feature-grid feature-grid--five">', content.learnerBenefits.map(function (item) { return '<article class="feature-card"><span class="feature-card__icon">' + item.icon + "</span><h3>" + item.title + "</h3><p>" + item.text + "</p></article>"; }).join(""), '</div></div></section>',
       '<section class="section pale-section" id="family-benefits"><div class="container benefits-layout"><div>', heading("FOR EDUCATORS & PARENTS", "Structure That Makes Support Visible", "The A.C.E. model gives educators and families a clear view of learner progress.", false), '</div><div class="benefit-list">', content.educatorBenefits.map(function (item) { return '<article><span aria-hidden="true">✓</span><div><h3>' + item.title + "</h3><p>" + item.text + "</p></div></article>"; }).join(""), '</div></div></section>',

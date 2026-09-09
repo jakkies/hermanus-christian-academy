@@ -55,12 +55,12 @@ window.HCA_CONTENT = {
     { number: "04", title: "A Light to the Nations", text: "Use their lives and learning to be a light to the nations." }
   ],
   gallery: [
-    { image: "assets/images/classroom.jpg", alt: "HCA learners taking part in a classroom lesson", label: "Learning" },
-    { image: "assets/images/creative.jpg", alt: "Learners taking part in a creative activity", label: "Creativity" },
-    { image: "assets/images/intermediate.jpg", alt: "HCA learners exploring a group activity", label: "Technology" },
-    { image: "assets/images/sport.jpg", alt: "A school sport activity", label: "Sport" },
+    { image: "assets/images/photos/LIFE-AT-HCA-Learning.jpg", alt: "An HCA teacher leading a classroom lesson", label: "Learning" },
+    { image: "assets/images/photos/LIFE-AT-HCA-Creativity.jpg", alt: "Colourful learner-made paper lanterns on display", label: "Creativity" },
+    { image: "assets/images/photos/LIFE-AT-HCA-Technology.jpg", alt: "An HCA learner working at an individual study station", label: "Technology" },
+    { image: "assets/images/photos/LIFE-AT-HCA-Sport.jpg", alt: "HCA netball players celebrating together on the school field", label: "Sport" },
     { image: "assets/images/Student-speech.jpg", alt: "An HCA learner speaking during a school gathering", label: "Worship" },
-    { image: "assets/images/community.jpg", alt: "Young people gathered in community", label: "Community" }
+    { image: "assets/images/photos/LIFE-AT-HCA-Community.jpg", alt: "Young HCA learners gathered together in a classroom", label: "Community" }
   ],
   testimonials: [
     {
@@ -109,9 +109,9 @@ window.HCA_CONTENT = {
   ],
   staffGroups: [
     { title: "Leadership & Administration", people: [
-      { name: "Mr. Olivier Ngadjou", role: "Principal" },
-      { name: "Kerry van Rensburg", role: "Gr 1 ‘A’ Supervisor & Deputy Principal" },
-      { name: "Khanyi Xhakaliva", role: "Reception / Financial Administrator" }
+      { name: "Mr. Olivier Ngadjou", role: "Principal", image: "assets/images/photos/PROFILE-Olivier-Ngadjou.jpg" },
+      { name: "Kerry van Rensburg", role: "Gr 1 ‘A’ Supervisor & Deputy Principal", image: "assets/images/photos/PROFILE-Kerry-van-Rensburg.jpg" },
+      { name: "Khanyi Xhakaliva", role: "Reception / Financial Administrator", image: "assets/images/photos/PROFILE-Khanyi-Xhakaliva.jpg" }
     ] },
     { title: "ECD / Pre-primary", people: [
       { name: "Stephanie Bruintjies", role: "ECD Practitioner" },
@@ -146,10 +146,10 @@ window.HCA_CONTENT = {
     ] }
   ],
   needGroups: [
-    { title: "Learner Access", image: "assets/images/community.jpg", alt: "A group of children learning together in a community setting", items: ["School bus / Kombi", "Sponsorship for learners most in need", "Sponsorship of learner curriculum materials such as PACEs"] },
-    { title: "Sport & Facilities", image: "assets/images/sport.jpg", alt: "A ball moving through a basketball hoop at a sports facility", items: ["Netball court", "Astro turf", "Soccer-field fencing"] },
-    { title: "Campus Improvement", image: "assets/images/hca-hero.png", alt: "Learners walking together outside a school building", items: ["Paint for school buildings", "Flooring", "General repairs"] },
-    { title: "Digital Learning", image: "assets/images/classroom.jpg", alt: "Learners in a classroom equipped for digital learning", items: ["Updated computers for graphic design, website design and e-learning"] }
+    { title: "Learner Access", image: "assets/images/photos/NEEDS-Learner-Access.jpg", alt: "Three young HCA learners standing at the school entrance", items: ["School bus / Kombi", "Sponsorship for learners most in need", "Sponsorship of learner curriculum materials such as PACEs"] },
+    { title: "Sport & Facilities", image: "assets/images/photos/NEEDS-Sport-Facilities.jpg", alt: "HCA learners playing soccer on the school field", items: ["Netball court", "Astro turf", "Soccer-field fencing"] },
+    { title: "Campus Improvement", image: "assets/images/photos/NEEDS-Campus-Improvement.jpg", alt: "HCA learners walking between school buildings", items: ["Paint for school buildings", "Flooring", "General repairs"] },
+    { title: "Digital Learning", image: "assets/images/photos/NEEDS-Digital-Learning.jpg", alt: "HCA learners using desktop computers", items: ["Updated computers for graphic design, website design and e-learning"] }
   ],
   communitySupport: {
     introduction: "HCA serves many learners from low-income families and households. The school notes that its fees are lower than many other independent schools in the area, while a number of families still struggle to meet school fees.",
@@ -162,11 +162,11 @@ window.HCA_CONTENT = {
     ]
   },
   pages: {
-    about: { eyebrow: "ABOUT HCA", title: "A School Founded on Faith, Character and Purpose", intro: "Hermanus Christian Academy has served the Hermanus community for more than three decades, providing Christ-centred education designed to develop both academic ability and godly character.", image: "assets/images/photos/ABOUT-HERO.jpg" },
+    about: { eyebrow: "ABOUT HCA", title: "A School Founded on Faith, Character and Purpose", intro: "Hermanus Christian Academy has served the Hermanus community for more than three decades, providing Christ-centred education designed to develop both academic ability and godly character.", image: "assets/images/photos/ABOUT-HERO-Student.jpg" },
     learning: { eyebrow: "LEARNING AT HCA", title: "Individualised Learning. Built for Mastery.", intro: "HCA uses the internationally recognised Accelerated Christian Education (A.C.E.) curriculum, a biblically based programme designed around individualised, self-paced learning.", image: "assets/images/photos/LEARNING-HERO.jpg" },
-    "school-life": { eyebrow: "SCHOOL LIFE", title: "More Than the Classroom", intro: "HCA complements its Christian academic programme with enrichment lessons, practical skills, sport and spiritual development.", image: "assets/images/photos/SCHOOL%20LIFE-HERO.jpg" },
-    admissions: { eyebrow: "ADMISSIONS", title: "Interested in HCA?", intro: "We would love to help you learn more about Hermanus Christian Academy and whether HCA may be the right fit for your child.", image: "assets/images/photos/ADMISSIONS-HERO.jpg" },
-    support: { eyebrow: "SUPPORT HCA", title: "Help Us Create More Opportunities for Every Learner", intro: "Fundraising and sponsorship help HCA sustain learning, maintain the campus and widen learner access.", image: "assets/images/community.jpg" },
+    "school-life": { eyebrow: "SCHOOL LIFE", title: "More Than the Classroom", intro: "HCA complements its Christian academic programme with enrichment lessons, practical skills, sport and spiritual development.", image: "assets/images/photos/SCHOOL-LIFE-HERO-Playground.jpg" },
+    admissions: { eyebrow: "ADMISSIONS", title: "Interested in HCA?", intro: "We would love to help you learn more about Hermanus Christian Academy and whether HCA may be the right fit for your child.", image: "assets/images/photos/ADMISSIONS-Entrance.jpg" },
+    support: { eyebrow: "SUPPORT HCA", title: "Help Us Create More Opportunities for Every Learner", intro: "Fundraising and sponsorship help HCA sustain learning, maintain the campus and widen learner access.", image: "assets/images/photos/SUPPORT-HERO-Students.jpg" },
     news: { eyebrow: "NEWS & EVENTS", title: "Stay Connected with HCA", intro: "School news and upcoming events will be published here as confirmed information becomes available.", image: "assets/images/intermediate.jpg" },
     parents: { eyebrow: "PARENT RESOURCES", title: "Information for HCA Families", intro: "Important school documents, notices and parent information will be made available here.", image: "assets/images/books.jpg" },
     contact: { eyebrow: "CONTACT HCA", title: "We Would Love to Hear from You", intro: "Contact the school office for admissions, visits, parent information and current support details.", image: "assets/images/photos/CONTACT-HERO.jpg" }
