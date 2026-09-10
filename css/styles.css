@@ -2276,10 +2276,30 @@ article[id],
   margin-block-start: 30px;
 }
 
-.donate-panel__copy .donate-panel__note {
-  margin: 18px 0 0;
-  color: rgba(255, 255, 255, 0.58);
-  font-size: 0.72rem;
+.donate-panel__banking {
+  display: grid;
+  gap: 6px;
+  margin-block-start: 24px;
+  padding: 20px 22px;
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-inline-start: 5px solid var(--color-accent);
+  border-radius: var(--radius-small);
+}
+
+.donate-panel__banking p {
+  margin: 0;
+  color: inherit;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.donate-panel__banking .donate-panel__account {
+  margin-block-start: 4px;
+  font-size: clamp(1.45rem, 2.4vw, 2rem);
+  letter-spacing: 0.08em;
 }
 
 .donate-panel__details {
