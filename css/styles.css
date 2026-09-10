@@ -2365,6 +2365,10 @@ article[id],
   margin-block-start: 28px;
 }
 
+.application-download-action {
+  margin-block-start: 14px;
+}
+
 .form-panel {
   padding: clamp(28px, 4vw, 42px);
   background: var(--color-off-white);

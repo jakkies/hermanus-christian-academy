@@ -196,7 +196,7 @@
   }
 
   function renderAdmissions() {
-    return '<section class="section"><div class="container enquiry-layout"><div class="content-copy">' + heading("START A CONVERSATION", "Learn More About HCA", "", false) + '<p>The supplied school information does not define a formal admissions process or fee schedule. Contact HCA directly for current information and to arrange a school visit.</p><div class="contact-actions"><a class="button button--blue" href="tel:' + school.telephoneHref + '">Call Admissions <span>→</span></a><a class="button button--outline" href="mailto:' + school.email + '">Email HCA <span>→</span></a></div></div><div class="form-panel"><h2>Request Information</h2>' + formMarkup("admissions") + "</div></div></section>";
+    return '<section class="section"><div class="container enquiry-layout"><div class="content-copy">' + heading("START A CONVERSATION", "Learn More About HCA", "", false) + '<p>The supplied school information does not define a formal admissions process or fee schedule. Contact HCA directly for current information and to arrange a school visit.</p><div class="contact-actions"><a class="button button--blue" href="tel:' + school.telephoneHref + '">Call Admissions <span>→</span></a><a class="button button--outline" href="mailto:' + school.email + '">Email HCA <span>→</span></a></div><div class="application-download-action"><a class="button button--primary" href="assets/documents/HCA-Application-Form-2026.pdf" download>Download Application Form for 2026 <span aria-hidden="true">↓</span></a></div></div><div class="form-panel"><h2>Request Information</h2>' + formMarkup("admissions") + "</div></div></section>";
   }
 
   function renderTestimonials(full) {
