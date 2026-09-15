@@ -193,9 +193,10 @@
     var admissions = kind === "admissions";
     var formEndpoint = "https://formsubmit.co/" + school.email;
     var ajaxEndpoint = "https://formsubmit.co/ajax/" + school.email;
+    var pageUrl = "https://hermanus-christian-academy.jakkies.workers.dev/" + (admissions ? "admissions.html" : "contact.html");
     var subject = admissions ? "New HCA admissions enquiry" : "New HCA website enquiry";
     var buttonText = admissions ? "Submit Admissions Enquiry" : "Send Enquiry";
-    return '<form class="enquiry-form" action="' + formEndpoint + '" method="POST" data-endpoint="' + ajaxEndpoint + '" data-form-type="' + kind + '" aria-describedby="' + kind + '-form-note ' + kind + '-form-message" novalidate><input type="hidden" name="_subject" value="' + subject + '"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="Enquiry type" value="' + (admissions ? "Admissions" : "General contact") + '"><label class="form-honeypot" aria-hidden="true">Leave this field empty<input name="_honey" tabindex="-1" autocomplete="off"></label><div class="form-grid"><label><span>Parent / guardian name</span><input name="name" autocomplete="name" required></label><label><span>Email</span><input name="email" type="email" autocomplete="email" required></label><label><span>Telephone</span><input name="telephone" type="tel" autocomplete="tel" required></label>' +
+    return '<form class="enquiry-form" action="' + formEndpoint + '" method="POST" data-endpoint="' + ajaxEndpoint + '" data-form-type="' + kind + '" aria-describedby="' + kind + '-form-note ' + kind + '-form-message" novalidate><input type="hidden" name="_subject" value="' + subject + '"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_url" value="' + pageUrl + '"><input type="hidden" name="Enquiry type" value="' + (admissions ? "Admissions" : "General contact") + '"><label class="form-honeypot" aria-hidden="true">Leave this field empty<input name="_honey" tabindex="-1" autocomplete="off"></label><div class="form-grid"><label><span>Parent / guardian name</span><input name="name" autocomplete="name" required></label><label><span>Email</span><input name="email" type="email" autocomplete="email" required></label><label><span>Telephone</span><input name="telephone" type="tel" autocomplete="tel" required></label>' +
       (admissions ? '<label><span>Learner name</span><input name="learner" required></label><label><span>Learner’s current grade</span><input name="currentGrade" required></label><label><span>Grade of interest</span><select name="interest" required><option value="">Select an option</option><option>ECD / Pre-primary</option><option>Primary School</option><option>Grade 8</option><option>Grade 9</option></select></label>' : "") +
       '<label class="form-grid__wide"><span>Message</span><textarea name="message" rows="5" required></textarea></label></div><button class="button button--primary" type="submit">' + buttonText + ' <span>→</span></button><p class="form-note" id="' + kind + '-form-note">By submitting, you consent to HCA using these details to respond to your enquiry.</p><p class="form-message" id="' + kind + '-form-message" role="status" aria-live="polite"></p></form>';
   }
@@ -346,24 +347,44 @@
         submitButton.innerHTML = 'Sending… <span aria-hidden="true">→</span>';
         message.textContent = "Sending your enquiry securely…";
 
+        var payload = {};
+        formData.forEach(function (value, key) {
+          if (key !== "_honey") payload[key] = value;
+        });
+
         fetch(form.dataset.endpoint, {
           method: "POST",
-          body: formData,
-          headers: { Accept: "application/json" }
+          body: JSON.stringify(payload),
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          }
         })
           .then(function (response) {
             return response.json().catch(function () { return {}; }).then(function (result) {
-              if (!response.ok || result.success === false || result.success === "false") throw new Error("Submission failed");
+              if (!response.ok || result.success === false || result.success === "false") {
+                throw new Error(typeof result.message === "string" ? result.message : "Submission failed");
+              }
               return result;
             });
           })
-          .then(function () {
+          .then(function (result) {
             form.reset();
-            message.textContent = "Thank you. Your enquiry has been sent to HCA.";
+            var serviceMessage = result && typeof result.message === "string" ? result.message : "";
+            if (/activat|confirm|verif/i.test(serviceMessage)) {
+              message.textContent = "Your enquiry was received. HCA must confirm the activation email sent to " + school.email + " before delivery begins.";
+            } else {
+              message.textContent = "Thank you. Your enquiry has been sent to HCA.";
+            }
             message.classList.add("is-success");
           })
-          .catch(function () {
-            message.innerHTML = 'We could not send your enquiry. Please try again or <a href="mailto:' + school.email + '">email HCA directly</a>.';
+          .catch(function (error) {
+            var serviceMessage = error && typeof error.message === "string" ? error.message : "";
+            if (/activat|confirm|verif/i.test(serviceMessage)) {
+              message.textContent = "The form service is awaiting activation. Please check " + school.email + " for its confirmation email, then try again.";
+            } else {
+              message.innerHTML = 'We could not send your enquiry. Please try again or <a href="mailto:' + school.email + '">email HCA directly</a>.';
+            }
             message.classList.add("is-error");
           })
           .finally(function () {
