@@ -30,6 +30,7 @@
     var nav = [
       ["home", "Home", "index.html"],
       ["about", "About", "about.html"],
+      ["news", "News & Events", "news.html"],
       ["learning", "Learning", "learning.html"],
       ["school-life", "School Life", "school-life.html"],
       ["support", "Support", "support.html"],
@@ -113,7 +114,7 @@
     }).join("");
 
     var news = document.querySelector("[data-news]");
-    if (news) news.innerHTML = '<div class="empty-state"><span aria-hidden="true">✦</span><h3>School news is coming soon.</h3><p>School news and upcoming events will be published here.</p></div>';
+    if (news) news.innerHTML = '<article class="news-card news-card--event"><a class="news-card__image" href="news.html#christmas-market-2026" aria-label="Read about the HCA Christmas Festival and Market"><img src="assets/images/photos/HCA-Christmas-Market-2026.jpg?v=20260915a" alt="HCA Christmas Festival and Market poster" width="853" height="1280" loading="lazy"></a><div><p class="news-card__date">31 OCTOBER 2026 · 09:00–13:00</p><h3><a href="news.html#christmas-market-2026">Christmas Festival &amp; Market</a></h3><p>Join us for a joyful morning with family and friends, festive stalls, treats, refreshments, games and activities—all while supporting HCA.</p><a class="text-link" href="news.html#christmas-market-2026">View Event Details <span>→</span></a></div></article>';
   }
 
   function pageHero(page) {
@@ -190,13 +191,17 @@
 
   function formMarkup(kind) {
     var admissions = kind === "admissions";
-    return '<form class="enquiry-form" data-form-type="' + kind + '" novalidate><div class="form-grid"><label><span>Parent / guardian name</span><input name="name" autocomplete="name" required></label><label><span>Email</span><input name="email" type="email" autocomplete="email" required></label><label><span>Telephone</span><input name="telephone" type="tel" autocomplete="tel" required></label>' +
+    var formEndpoint = "https://formsubmit.co/" + school.email;
+    var ajaxEndpoint = "https://formsubmit.co/ajax/" + school.email;
+    var subject = admissions ? "New HCA admissions enquiry" : "New HCA website enquiry";
+    var buttonText = admissions ? "Submit Admissions Enquiry" : "Send Enquiry";
+    return '<form class="enquiry-form" action="' + formEndpoint + '" method="POST" data-endpoint="' + ajaxEndpoint + '" data-form-type="' + kind + '" aria-describedby="' + kind + '-form-note ' + kind + '-form-message" novalidate><input type="hidden" name="_subject" value="' + subject + '"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="Enquiry type" value="' + (admissions ? "Admissions" : "General contact") + '"><label class="form-honeypot" aria-hidden="true">Leave this field empty<input name="_honey" tabindex="-1" autocomplete="off"></label><div class="form-grid"><label><span>Parent / guardian name</span><input name="name" autocomplete="name" required></label><label><span>Email</span><input name="email" type="email" autocomplete="email" required></label><label><span>Telephone</span><input name="telephone" type="tel" autocomplete="tel" required></label>' +
       (admissions ? '<label><span>Learner name</span><input name="learner" required></label><label><span>Learner’s current grade</span><input name="currentGrade" required></label><label><span>Grade of interest</span><select name="interest" required><option value="">Select an option</option><option>ECD / Pre-primary</option><option>Primary School</option><option>Grade 8</option><option>Grade 9</option></select></label>' : "") +
-      '<label class="form-grid__wide"><span>Message</span><textarea name="message" rows="5" required></textarea></label></div><button class="button button--primary" type="submit">Prepare Email Enquiry <span>→</span></button><p class="form-note">Submitting opens your email app so you can review and send the enquiry.</p><p class="form-message" aria-live="polite"></p></form>';
+      '<label class="form-grid__wide"><span>Message</span><textarea name="message" rows="5" required></textarea></label></div><button class="button button--primary" type="submit">' + buttonText + ' <span>→</span></button><p class="form-note" id="' + kind + '-form-note">By submitting, you consent to HCA using these details to respond to your enquiry.</p><p class="form-message" id="' + kind + '-form-message" role="status" aria-live="polite"></p></form>';
   }
 
   function renderAdmissions() {
-    return '<section class="section"><div class="container enquiry-layout"><div class="content-copy">' + heading("START A CONVERSATION", "Learn More About HCA", "", false) + '<p>The supplied school information does not define a formal admissions process or fee schedule. Contact HCA directly for current information and to arrange a school visit.</p><div class="contact-actions"><a class="button button--blue" href="tel:' + school.telephoneHref + '">Call Admissions <span>→</span></a><a class="button button--outline" href="mailto:' + school.email + '">Email HCA <span>→</span></a></div><div class="application-download-action"><a class="button button--primary" href="assets/documents/HCA-Application-Form-2026.pdf" download>Download Application Form for 2026 <span aria-hidden="true">↓</span></a></div></div><div class="form-panel"><h2>Request Information</h2>' + formMarkup("admissions") + "</div></div></section>";
+    return '<section class="section"><div class="container enquiry-layout"><div class="content-copy">' + heading("START A CONVERSATION", "Learn More About HCA", "", false) + '<p>The supplied school information does not define a formal admissions process or fee schedule. Contact HCA directly for current information and to arrange a school visit.</p><div class="contact-actions"><a class="button button--blue" href="tel:' + school.telephoneHref + '">Call Admissions <span>→</span></a><a class="button button--outline" href="mailto:' + school.email + '">Email HCA <span>→</span></a></div><div class="application-download-action"><a class="button button--primary" href="assets/documents/HCA-Application-Form-2026.pdf?v=20260915a" download>Download Application Form for 2026 <span aria-hidden="true">↓</span></a></div></div><div class="form-panel"><h2>Request Information</h2>' + formMarkup("admissions") + "</div></div></section>";
   }
 
   function renderTestimonials(full) {
@@ -214,7 +219,13 @@
   }
 
   function renderNews() {
-    return '<section class="section"><div class="container narrow-content"><div class="empty-state empty-state--large"><span aria-hidden="true">✦</span><h2>School news and upcoming events will be published here.</h2><p>For current notices or confirmed dates, please contact the school office.</p><a class="button button--primary" href="contact.html">Contact HCA <span>→</span></a></div></div></section>';
+    return [
+      '<section class="section news-page"><div class="container">',
+      '<p class="eyebrow"><span></span>UPCOMING EVENT</p>',
+      '<article class="event-feature" id="christmas-market-2026"><button class="event-feature__thumbnail" type="button" data-event-lightbox-open aria-label="Enlarge the Christmas Festival and Market poster"><img src="assets/images/photos/HCA-Christmas-Market-2026.jpg?v=20260915a" alt="Hermanus Christian Academy Christmas Festival and Market poster" width="853" height="1280" loading="lazy"><span>View full poster</span></button><div class="event-feature__content"><p class="event-feature__date">Saturday, 31 October 2026</p><h2>HCA Christmas Festival &amp; Market</h2><p>Join us from 09:00 to 13:00 for a joyful morning with family and friends. Browse festive stalls, find gifts and treats, enjoy food and refreshments, and take part in games and activities while supporting Hermanus Christian Academy.</p><dl class="event-feature__details"><div><dt>Date</dt><dd>31 October 2026</dd></div><div><dt>Time</dt><dd>09:00–13:00</dd></div></dl><a class="button button--primary" href="contact.html">Contact HCA <span>→</span></a></div></article>',
+      '<dialog class="event-lightbox" data-event-lightbox aria-label="Christmas Festival and Market poster"><div class="event-lightbox__inner"><button class="event-lightbox__close" type="button" data-event-lightbox-close aria-label="Close enlarged poster">×</button><img src="assets/images/photos/HCA-Christmas-Market-2026.jpg?v=20260915a" alt="Hermanus Christian Academy Christmas Festival and Market poster" width="853" height="1280"></div></dialog>',
+      '</div></section>'
+    ].join("");
   }
 
   function renderParents() {
@@ -222,11 +233,11 @@
   }
 
   function contactCards() {
-    return '<div class="contact-info-grid"><article><span>01</span><h3>Physical Address</h3><p>' + school.physicalAddress.join("<br>") + '</p><a class="text-link" href="https://maps.google.com/?q=1823+Bergsig+Road+Sandbaai+Hermanus">Get Directions <span>→</span></a></article><article><span>02</span><h3>Postal Address</h3><p>' + school.postalAddress.join("<br>") + '</p></article><article><span>03</span><h3>Telephone</h3><p><a href="tel:' + school.telephoneHref + '">' + school.telephone + '</a></p><h3>Email</h3><p><a href="mailto:' + school.email + '">' + school.email + "</a></p></article></div>";
+    return '<div class="contact-info-grid"><article><span>01</span><h3>Physical Address</h3><p>' + school.physicalAddress.join("<br>") + '</p><a class="text-link" href="https://maps.google.com/?q=1823+Bergsig+Road+Sandbaai+Hermanus">Get Directions <span>→</span></a></article><article><span>02</span><h3>Postal Address</h3><p>' + school.postalAddress.join("<br>") + '</p></article><article><span>03</span><h3>Telephone</h3><p><a href="tel:' + school.telephoneHref + '">' + school.telephone + '</a></p><h3>Email</h3><p><a href="mailto:' + school.email + '">' + school.email + '</a><br><a href="mailto:' + school.principalEmail + '">' + school.principalEmail + "</a></p></article></div>";
   }
 
   function renderContact() {
-    return '<section class="section" id="contact-details"><div class="container">' + heading("CONTACT DETAILS", "Hermanus Christian Academy", "", true) + contactCards() + '<div class="registration-panel"><div><p class="eyebrow"><span></span>ORGANISATION</p><h2>' + school.organisation + '</h2></div><dl><div><dt>NPO Registration</dt><dd>' + school.npoRegistration + '</dd></div><div><dt>Public Benefit Organisation Reference</dt><dd>' + school.pboReference + '</dd></div></dl></div><div class="enquiry-layout enquiry-layout--contact" id="enquiry"><div class="content-copy">' + heading("SEND AN ENQUIRY", "Start a Conversation", "Use the form to prepare an email to the school office. You can review the message in your email app before sending it.", false) + '</div><div class="form-panel">' + formMarkup("contact") + "</div></div></div></section>";
+    return '<section class="section" id="contact-details"><div class="container">' + heading("CONTACT DETAILS", "Hermanus Christian Academy", "", true) + contactCards() + '<div class="registration-panel"><div><p class="eyebrow"><span></span>ORGANISATION</p><h2>' + school.organisation + '</h2></div><dl><div><dt>NPO Registration</dt><dd>' + school.npoRegistration + '</dd></div><div><dt>Public Benefit Organisation Reference</dt><dd>' + school.pboReference + '</dd></div></dl></div><div class="enquiry-layout enquiry-layout--contact" id="enquiry"><div class="content-copy">' + heading("SEND AN ENQUIRY", "Start a Conversation", "Complete the form and the school office will respond using the contact details you provide.", false) + '</div><div class="form-panel">' + formMarkup("contact") + "</div></div></div></section>";
   }
 
   function renderInternalPage() {
@@ -307,15 +318,80 @@
       form.addEventListener("submit", function (event) {
         event.preventDefault();
         var message = form.querySelector(".form-message");
-        if (!form.checkValidity()) { form.reportValidity(); message.textContent = "Please complete all required fields."; return; }
-        var data = new FormData(form);
-        var fields = [];
-        data.forEach(function (value, key) { fields.push(key.replace(/([A-Z])/g, " $1").replace(/^./, function (char) { return char.toUpperCase(); }) + ": " + value); });
-        var subject = form.dataset.formType === "admissions" ? "HCA admission enquiry" : "HCA website enquiry";
-        message.textContent = "Your email app is opening with the enquiry ready to review.";
-        window.location.href = "mailto:" + school.email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(fields.join("\n"));
+        var submitButton = form.querySelector('button[type="submit"]');
+        var originalButtonMarkup = submitButton.innerHTML;
+        message.classList.remove("is-success", "is-error");
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          message.textContent = "Please complete all required fields correctly.";
+          message.classList.add("is-error");
+          return;
+        }
+
+        var formData = new FormData(form);
+        if (formData.get("_honey")) {
+          form.reset();
+          message.textContent = "Thank you. Your enquiry has been received.";
+          message.classList.add("is-success");
+          return;
+        }
+
+        if (!window.fetch) {
+          form.submit();
+          return;
+        }
+
+        submitButton.disabled = true;
+        submitButton.innerHTML = 'Sending… <span aria-hidden="true">→</span>';
+        message.textContent = "Sending your enquiry securely…";
+
+        fetch(form.dataset.endpoint, {
+          method: "POST",
+          body: formData,
+          headers: { Accept: "application/json" }
+        })
+          .then(function (response) {
+            return response.json().catch(function () { return {}; }).then(function (result) {
+              if (!response.ok || result.success === false || result.success === "false") throw new Error("Submission failed");
+              return result;
+            });
+          })
+          .then(function () {
+            form.reset();
+            message.textContent = "Thank you. Your enquiry has been sent to HCA.";
+            message.classList.add("is-success");
+          })
+          .catch(function () {
+            message.innerHTML = 'We could not send your enquiry. Please try again or <a href="mailto:' + school.email + '">email HCA directly</a>.';
+            message.classList.add("is-error");
+          })
+          .finally(function () {
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonMarkup;
+          });
       });
     });
+  }
+
+  function initEventLightbox() {
+    var lightbox = document.querySelector("[data-event-lightbox]");
+    var openButton = document.querySelector("[data-event-lightbox-open]");
+    var closeButton = document.querySelector("[data-event-lightbox-close]");
+    if (!lightbox || !openButton || !closeButton) return;
+
+    function closeLightbox() {
+      if (lightbox.open) lightbox.close();
+    }
+
+    openButton.addEventListener("click", function () {
+      if (typeof lightbox.showModal === "function") lightbox.showModal();
+    });
+    closeButton.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", function (event) {
+      if (event.target === lightbox) closeLightbox();
+    });
+    lightbox.addEventListener("close", function () { openButton.focus(); });
   }
 
   renderSharedLayout();
@@ -324,5 +400,6 @@
   initNavigation();
   initSubNavigation();
   initEnquiryForms();
+  initEventLightbox();
   document.documentElement.classList.remove("no-js");
 })();

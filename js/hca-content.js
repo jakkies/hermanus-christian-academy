@@ -8,6 +8,7 @@ window.HCA_CONTENT = {
     telephone: "028 316 1910",
     telephoneHref: "+27283161910",
     email: "info@hermanuschristianacademy.co.za",
+    principalEmail: "principal@hermanuschristianacademy.co.za",
     physicalAddress: ["1823 Bergsig Road", "Sandbaai", "Hermanus"],
     postalAddress: ["PO Box 2202", "Hermanus", "7200"],
     npoRegistration: "004-172 NPO",
@@ -111,12 +112,12 @@ window.HCA_CONTENT = {
     { title: "Leadership & Administration", people: [
       { name: "Mr. Olivier Ngadjou", role: "Principal", image: "assets/images/photos/PROFILE-Olivier-Ngadjou.jpg" },
       { name: "Kerry van Rensburg", role: "Gr 1 ‘A’ Supervisor & Deputy Principal", image: "assets/images/photos/PROFILE-Kerry-van-Rensburg.jpg" },
-      { name: "Khanyi Xhakaliva", role: "Reception / Financial Administrator", image: "assets/images/photos/PROFILE-Khanyi-Xhakaliva.jpg" }
+      { name: "Khanyi Xhakaliva", role: "Reception / Financial Administrator", image: "assets/images/photos/PROFILE-Khanyi-Xhakaliva.jpg" },
+      { name: "Nosipho Mantyi", role: "ECD Principal", image: "assets/images/photos/PROFILE-Nosipho-Mantyi.jpg?v=20260915a" }
     ] },
     { title: "ECD / Pre-primary", people: [
       { name: "Stephanie Bruintjies", role: "ECD Practitioner" },
       { name: "Hillmare Arnolds", role: "ECD Practitioner" },
-      { name: "Nosipho Mantyi", role: "ECD Practitioner" },
       { name: "Yvonne Ndibongo", role: "Monitor/Assistant (Gr R ‘B’)" },
       { name: "Faith Mpinganjira", role: "Monitor/Assistant (Gr R ‘A’)" },
       { name: "Natalie Wilkinson", role: "Monitor/Assistant (Gr RR)" }
@@ -124,9 +125,8 @@ window.HCA_CONTENT = {
     { title: "Primary Learning Team", people: [
       { name: "Vuyokazi Nxidi", role: "Supervisor (Gr 2 ‘A’)" },
       { name: "Danielle Abrahams", role: "Monitor/Assistant (Gr 2 ‘A’)" },
-      { name: "Jacques Blom", role: "Supervisor (Gr 5 & 6)" },
+      { name: "Henrico Faro", role: "Supervisor (Gr 5 & 6)" },
       { name: "Talitha Faro", role: "Monitor/Assistant (Gr 5 & 6)" },
-      { name: "Henrico Faro", role: "Monitor/Assistant (Gr 3 & 4)" },
       { name: "Crezelda Willemse", role: "Monitor/Assistant (Gr 3 & 4)" },
       { name: "Timothy Loubser", role: "Monitor/Assistant (Gr 3 & 4)" },
       { name: "Puleng", role: "Monitor/Assistant (Gr 1 ‘A’)" },
@@ -140,9 +140,9 @@ window.HCA_CONTENT = {
       { name: "Jonnelize Swanepoel", role: "Monitor/Assistant (Gr 7–9)" }
     ] },
     { title: "Campus Support", people: [
-      { name: "Nosiphiwo Thintelo", role: "Cleaner" },
+      { name: "Pamella Petro", role: "Cleaner" },
       { name: "Lineo Maamohe", role: "Cleaner" },
-      { name: "Connex", role: "Gardener" }
+      { name: "Sikela Phamkweni", role: "Gardener" }
     ] }
   ],
   needGroups: [
@@ -165,9 +165,9 @@ window.HCA_CONTENT = {
     about: { eyebrow: "ABOUT HCA", title: "A School Founded on Faith, Character and Purpose", intro: "Hermanus Christian Academy has served the Hermanus community for more than three decades, providing Christ-centred education designed to develop both academic ability and godly character.", image: "assets/images/photos/ABOUT-HERO-Student.jpg" },
     learning: { eyebrow: "LEARNING AT HCA", title: "Individualised Learning. Built for Mastery.", intro: "HCA uses the internationally recognised Accelerated Christian Education (A.C.E.) curriculum, a biblically based programme designed around individualised, self-paced learning.", image: "assets/images/photos/LEARNING-HERO.jpg" },
     "school-life": { eyebrow: "SCHOOL LIFE", title: "More Than the Classroom", intro: "HCA complements its Christian academic programme with enrichment lessons, practical skills, sport and spiritual development.", image: "assets/images/photos/SCHOOL-LIFE-HERO-Playground.jpg" },
-    admissions: { eyebrow: "ADMISSIONS", title: "Interested in HCA?", intro: "We would love to help you learn more about Hermanus Christian Academy and whether HCA may be the right fit for your child.", image: "assets/images/photos/ADMISSIONS-Entrance.jpg" },
+    admissions: { eyebrow: "ADMISSIONS", title: "Interested in HCA?", intro: "We would love to help you learn more about Hermanus Christian Academy and whether HCA may be the right fit for your child.", image: "assets/images/photos/ADMISSIONS-HERO.jpg?v=20260915a" },
     support: { eyebrow: "SUPPORT HCA", title: "Help Us Create More Opportunities for Every Learner", intro: "Fundraising and sponsorship help HCA sustain learning, maintain the campus and widen learner access.", image: "assets/images/photos/SUPPORT-HERO-Students.jpg" },
-    news: { eyebrow: "NEWS & EVENTS", title: "Stay Connected with HCA", intro: "School news and upcoming events will be published here as confirmed information becomes available.", image: "assets/images/intermediate.jpg" },
+    news: { eyebrow: "NEWS & EVENTS", title: "Stay Connected with HCA", intro: "School news and upcoming events will be published here as confirmed information becomes available.", image: "assets/images/photos/NEWS-HERO.jpg?v=20260915a" },
     parents: { eyebrow: "PARENT RESOURCES", title: "Information for HCA Families", intro: "Important school documents, notices and parent information will be made available here.", image: "assets/images/books.jpg" },
     contact: { eyebrow: "CONTACT HCA", title: "We Would Love to Hear from You", intro: "Contact the school office for admissions, visits, parent information and current support details.", image: "assets/images/photos/CONTACT-HERO-Computer-Lab.jpg" }
   }
